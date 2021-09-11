@@ -156,8 +156,18 @@ var app = {
             onConnect = function() {
                 // subscribe for incoming data
                 ble.startNotification(deviceId, rfduino.serviceUUID, rfduino.receiveCharacteristic, app.onData, app.onError);
-                disconnectButton.dataset.deviceId = deviceId;
-                ledButton.dataset.deviceId = deviceId;
+//                disconnectButton.dataset.deviceId = deviceId;
+//                ledButton.dataset.deviceId = deviceId;
+                buttonUp.dataset.deviceId = deviceId;
+                buttonDown.dataset.deviceId = deviceId;
+                buttonLeft.dataset.deviceId = deviceId;
+                buttonRight.dataset.deviceId = deviceId;
+                buttonVerticalUp.dataset.deviceId = deviceId;
+                buttonVerticalDown.dataset.deviceId = deviceId;
+                buttonExpand.dataset.deviceId = deviceId;
+                buttonCollapse.dataset.deviceId = deviceId;
+                button4g5g.dataset.deviceId = deviceId;
+                
                 app.showDetailPage();
             };
 
