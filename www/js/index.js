@@ -260,11 +260,13 @@ var app = {
         app.showMainPage();
     },
     disconnectButtonLogic: function(event){
-        setTimeout(() => {disconnectButtonClickCount = 0}, 3000);
-        disconnectButtonClickCount++;
-        if(disconnectButtonClickCount > 10){
-            alert("Disconnecting Bluetooth");
-            app.disconnect(event);
+        if (event.touches.length > 2){
+            setTimeout(() => {disconnectButtonClickCount = 0}, 3000);
+            disconnectButtonClickCount++;
+            if(disconnectButtonClickCount > 10){
+                alert("Disconnecting Bluetooth");
+                app.disconnect(event);
+            }
         }
     },
     showMainPage: function() {
