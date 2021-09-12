@@ -260,7 +260,7 @@ var app = {
         app.showMainPage();
     },
     disconnectButtonLogic: function(event){
-        setTimeout(() => {disconnectButtonClickCount = 0}, 5000);
+        setTimeout(() => {disconnectButtonClickCount = 0}, 3000);
         disconnectButtonClickCount++;
         if(disconnectButtonClickCount > 10){
             alert("Disconnecting Bluetooth");
