@@ -30,6 +30,8 @@ var rfduino = {
     disconnectCharacteristic: "2223"
 };
 
+var disconnectButtonClickCount = 0;
+
 // returns advertising data as hashmap of byte arrays keyed by type
 // advertising data is length, type, data
 // https://www.bluetooth.org/en-us/specification/assigned-numbers/generic-access-profile
@@ -109,7 +111,7 @@ var app = {
         refreshButton.addEventListener('touchstart', this.refreshDeviceList, false);
 //        ledButton.addEventListener('touchstart', this.sendData, false);
 //        ledButton.addEventListener('touchend', this.sendData, false);
-//        disconnectButton.addEventListener('touchstart', this.disconnect, false);
+        disconnectButton.addEventListener('touchstart', this.disconnectButtonLogic, false);
         
         buttonUp.addEventListener('touchstart', this.sendData, false);
         buttonUp.addEventListener('touchend', this.sendData, false);
@@ -156,7 +158,7 @@ var app = {
             onConnect = function() {
                 // subscribe for incoming data
 //                ble.startNotification(deviceId, rfduino.serviceUUID, rfduino.receiveCharacteristic, app.onData, app.onError);
-//                disconnectButton.dataset.deviceId = deviceId;
+                disconnectButton.dataset.deviceId = deviceId;
 //                ledButton.dataset.deviceId = deviceId;
                 buttonUp.dataset.deviceId = deviceId;
                 buttonDown.dataset.deviceId = deviceId;
@@ -230,6 +232,7 @@ var app = {
                 data[0] = event.type === 'touchstart' ? 0x7 : 0x17;
                 break;
             case "button4g5g":
+                event.target.classList.remove("active");
                 if(event.type === 'touchstart'){
                     if(event.target.classList.contains("button4g")){
                         event.target.classList.remove("button4g");
@@ -256,6 +259,14 @@ var app = {
         app.refreshDeviceList();
         app.showMainPage();
     },
+    disconnectButtonLogic: function(event){
+        setTimeout(() => {disconnectButtonClickCount = 0}, 5000);
+        disconnectButtonClickCount++;
+        if(disconnectButtonClickCount > 10){
+            alert("Disconnecting Bluetooth");
+            app.disconnect(event);
+        }
+    },
     showMainPage: function() {
         mainPage.hidden = false;
         detailPage.hidden = true;
@@ -265,7 +276,16 @@ var app = {
         detailPage.hidden = false;
     },
     onError: function(reason) {
-//        console.log(JSON.stringify(obj))
-        alert("ERROR: " + reason); // real apps should use notification.alert
+        console.log(JSON.stringify(reason))
+        if(typeof(reason) == 'string'){
+            alert("ERROR: " + reason); // real apps should use notification.alert
+        } else if(reason.errorMessage != undefined){
+            if(reason.errorMessage == "Peripheral Disconnected"){
+                app.refreshDeviceList();
+                app.showMainPage();
+            }
+            alert("ERROR: " + reason.errorMessage);
+        }
+        
     }
 };

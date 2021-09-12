@@ -10,6 +10,7 @@ body {
     
     -webkit-touch-callout: none; -webkit-user-select: none;
     overflow: hidden; /* Hide scrollbars */
+    margin:0;
 }
 
 .app{
@@ -54,7 +55,6 @@ button {
     width:100px;
     background-size: cover;
     background-repeat: no-repeat;
-    -webkit-tap-highlight-color: #f0f;
 }
 
 
@@ -67,74 +67,83 @@ button {
 #buttonUp{
     background: url(up.png);
     background-size: cover;
-    left: 287px;
-    top: 320px;
+    left: 278px;
+    top: 312px;
 }
 
 #buttonLeft{
     background: url(left.png);
     background-size: cover;
-    left: 165px;
-    top: 445px;
+    left: 157px;
+    top: 437px;
 }
 
 #buttonRight{
     background: url(right.png);
     background-size: cover;
-    left: 405px;
-    top: 445px;
+    left: 398px;
+    top: 438px;
 }
 
 #buttonDown{
     background: url(down.png);
     background-size: cover;
-    left: 287px;
-    top: 570px;
+    left: 278px;
+    top: 562px;
 }
 
 #buttonVerticalUp{
     background: url(verticalup.png);
     background-size: cover;
-    left: 647px;
-    top: 320px;
+    left: 640px;
+    top: 312px;
 }
 
 #buttonVerticalDown{
     background: url(verticaldown.png);
     background-size: cover;
-    left: 647px;
-    top: 570px;
+    left: 640px;
+    top: 562px;
 }
 
 #buttonExpand{
     background: url(expand.png);
     background-size: cover;
-    left: 877px;
-    top: 445px;
+    left: 870px;
+    top: 437px;
 }
 
 #buttonCollapse{
     background: url(collapse.png);
     background-size: cover;
-    left: 1104px;
-    top: 445px;
+    left: 1098px;
+    top: 437px;
 }
 
 #button4g5g{
     -webkit-transition:200ms ease-in-out;
     background: url(4g5g.png);
     background-size: cover;
-    left: 1058px;
-    top: 853px;
-    opacity:100% !important;
+    left: 1050px;
+    top: 845px;
+    opacity:1.0 !important;
 }
 
 .button4g{
     -webkit-transition:200ms ease-in-out;
     opacity:100% !important;
-    left: 926px !important;
+    left: 918px !important;
 }
 
+
+#disconnectButton{
+    position:absolute;
+    height: 50px;
+    width: 310px;
+    top: 860px;
+    left: 170px;
+    }
+}
 
 #detailPage button {
     margin-top: 40px;
