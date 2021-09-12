@@ -59,7 +59,8 @@ button {
 
 
 .robotButton.active{
-   opacity:50%;
+   filter: invert(100%);
+   opacity:0.5;
  }
 
 

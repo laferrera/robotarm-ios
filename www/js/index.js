@@ -155,7 +155,7 @@ var app = {
         var deviceId = e.target.dataset.deviceId,
             onConnect = function() {
                 // subscribe for incoming data
-                ble.startNotification(deviceId, rfduino.serviceUUID, rfduino.receiveCharacteristic, app.onData, app.onError);
+//                ble.startNotification(deviceId, rfduino.serviceUUID, rfduino.receiveCharacteristic, app.onData, app.onError);
 //                disconnectButton.dataset.deviceId = deviceId;
 //                ledButton.dataset.deviceId = deviceId;
                 buttonUp.dataset.deviceId = deviceId;
@@ -253,6 +253,8 @@ var app = {
     disconnect: function(event) {
         var deviceId = event.target.dataset.deviceId;
         ble.disconnect(deviceId, app.showMainPage, app.onError);
+        app.refreshDeviceList();
+        app.showMainPage();
     },
     showMainPage: function() {
         mainPage.hidden = false;
@@ -263,6 +265,7 @@ var app = {
         detailPage.hidden = false;
     },
     onError: function(reason) {
+//        console.log(JSON.stringify(obj))
         alert("ERROR: " + reason); // real apps should use notification.alert
     }
 };
