@@ -106,15 +106,15 @@ button {
     top: 562px;
 }
 
-#buttonExpand{
-    background: url(expand.png);
+#buttonRotateCCW{
+    background: url(rotateccw.png);
     background-size: cover;
     left: 870px;
     top: 437px;
 }
 
-#buttonCollapse{
-    background: url(collapse.png);
+#buttonRotateCW{
+    background: url(rotatecw.png);
     background-size: cover;
     left: 1098px;
     top: 437px;

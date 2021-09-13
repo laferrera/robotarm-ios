@@ -125,10 +125,10 @@ var app = {
         buttonVerticalUp.addEventListener('touchend', this.sendData, false);
         buttonVerticalDown.addEventListener('touchstart', this.sendData, false);
         buttonVerticalDown.addEventListener('touchend', this.sendData, false);
-        buttonExpand.addEventListener('touchstart', this.sendData, false);
-        buttonExpand.addEventListener('touchend', this.sendData, false);
-        buttonCollapse.addEventListener('touchstart', this.sendData, false);
-        buttonCollapse.addEventListener('touchend', this.sendData, false);
+        buttonRotateCCW.addEventListener('touchstart', this.sendData, false);
+        buttonRotateCCW.addEventListener('touchend', this.sendData, false);
+        buttonRotateCW.addEventListener('touchstart', this.sendData, false);
+        buttonRotateCW.addEventListener('touchend', this.sendData, false);
         button4g5g.addEventListener('touchstart', this.sendData, false);
 //        button4g5g.addEventListener('touchend', this.sendData, false);
 
@@ -166,8 +166,8 @@ var app = {
                 buttonRight.dataset.deviceId = deviceId;
                 buttonVerticalUp.dataset.deviceId = deviceId;
                 buttonVerticalDown.dataset.deviceId = deviceId;
-                buttonExpand.dataset.deviceId = deviceId;
-                buttonCollapse.dataset.deviceId = deviceId;
+                buttonRotateCCW.dataset.deviceId = deviceId;
+                buttonRotateCW.dataset.deviceId = deviceId;
                 button4g5g.dataset.deviceId = deviceId;
                 
                 app.showDetailPage();
@@ -225,10 +225,10 @@ var app = {
             case "buttonVerticalDown":
                 data[0] = event.type === 'touchstart' ? 0x5 : 0x15;
                 break;
-            case "buttonExpand":
+            case "buttonRotateCCW": //was expand
                 data[0] = event.type === 'touchstart' ? 0x6 : 0x16;
                 break;
-            case "buttonCollapse":
+            case "buttonRotateCW": //was collapse
                 data[0] = event.type === 'touchstart' ? 0x7 : 0x17;
                 break;
             case "button4g5g":
